@@ -57,7 +57,7 @@ class theme_gologo_format_topics_renderer extends format_topics_renderer {
 
         foreach ($modinfo->get_section_info_all() as $section => $thissection) {
             if ($section == 0) {
-                // 0-section is displayed a little different then the others
+                // The 0-section is displayed a little different then the others.
                 if ($thissection->summary or !empty($modinfo->sections[0]) or $PAGE->user_is_editing()) {
                     echo $this->section_header($thissection, $course, false, 0);
                     echo $this->courserenderer->course_section_cm_list($course, $thissection, 0);
@@ -67,7 +67,7 @@ class theme_gologo_format_topics_renderer extends format_topics_renderer {
                 continue;
             }
             if ($section > $course->numsections) {
-                // activities inside this section are 'orphaned', this section will be printed as 'stealth' below
+                // Activities inside this section are 'orphaned', this section will be printed as 'stealth' below.
                 continue;
             }
             // Show the section if the user is permitted to access it, OR if it's not available
@@ -103,7 +103,7 @@ class theme_gologo_format_topics_renderer extends format_topics_renderer {
             // Print stealth sections if present.
             foreach ($modinfo->get_section_info_all() as $section => $thissection) {
                 if ($section <= $course->numsections or empty($modinfo->sections[$section])) {
-                    // this is not stealth section or it is empty
+                    // This is not stealth section or it is empty.
                     continue;
                 }
                 echo $this->stealth_section_header($section);
@@ -112,36 +112,37 @@ class theme_gologo_format_topics_renderer extends format_topics_renderer {
             }
 
             echo $this->end_section_list();
+            echo html_writer::start_tag('div', array('id' => 'changenumsections', 'class' => 'mdl-right'));
 
-            echo html_writer::start_tag('div',
-                array('id' => 'changenumsections', 'class' => 'mdl-right'));
-
-            // Increase number of sections.
-            $straddsection = get_string('addsection', 'theme_gologo');
+            // Increase number of sections (Add section).
+            $addsection = get_string('addsection', 'theme_gologo');
+            $icon = 'fa-chevron-down';
+            $classes = 'increase-sections';
             $url = new moodle_url('/course/changenumsections.php',
                 array('courseid' => $course->id,
                       'increase' => true,
                       'sesskey' => sesskey()));
-
-            $icon = 'fa-chevron-down';
             $itag = html_writer::tag('i', '', array('class' => 'fa ' . $icon));
 
-            echo html_writer::link($url, $itag . ' ' . $straddsection . get_accesshide($straddsection) ,
-                    array('class' => 'increase-sections btn btn-default', 'title' => $straddsection));
+            echo html_writer::link($url,
+                        $itag . ' ' . $addsection,
+                        array('class' => $classes . ' btn btn-default', 'title' => $addsection));
 
             if ($course->numsections > 0) {
                 // Reduce number of sections sections.
-                $strdeletesection = get_string('deletesection', 'theme_gologo');
+                $deletesection = get_string('deletesection', 'theme_gologo');
+                $icon = 'fa-chevron-up';
+                $classes = 'reduce-sections';
                 $url = new moodle_url('/course/changenumsections.php',
                     array('courseid' => $course->id,
                           'increase' => false,
                           'sesskey' => sesskey()));
-                $icon = 'fa-chevron-up';
-                $itag = html_writer::tag('i', '', array('class' => 'fa ' . $icon));
-                echo html_writer::link($url, $itag . ' ' . $strdeletesection . get_accesshide($strdeletesection) ,
-                    array('class' => 'reduce-sections btn btn-default', 'title' => $strdeletesection));
-            }
+                $itag = $itag = html_writer::tag('i', '', array('class' => 'fa ' . $icon));
 
+                echo html_writer::link($url,
+                            $itag . ' ' . $deletesection,
+                            array('class' => $classes . ' btn btn-default', 'title' => $deletesection));
+            }
             echo html_writer::end_tag('div');
         } else {
             echo $this->end_section_list();

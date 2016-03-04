@@ -35,7 +35,7 @@ $html = theme_gologo_get_html_for_settings($OUTPUT, $PAGE);
 $regionmain = 'span9 pull-right';
 $sidepre = 'span3 desktop-first-column';
 $homemain = 'span7 desktop-first-colomn';
-$homecontent= 'span5 pull-right';
+$homecontent = 'span5 pull-right';
 // Reset layout mark-up for RTL languages.
 if (right_to_left()) {
     $regionmain = 'span9 desktop-first-column';

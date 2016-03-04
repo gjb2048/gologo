@@ -49,7 +49,7 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body <?php echo $OUTPUT->body_attributes($html->bodyclass); ?>>
+<body <?php echo $OUTPUT->body_attributes($html->bodyclasses); ?>>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
@@ -76,9 +76,9 @@ echo $OUTPUT->doctype() ?>
     <ul class="thumbnails">
       <li class="span12">
         <div class="thumbnail">
-          <?php echo $html->poster1image;?>
-          <?php echo $html->poster1heading;?>
-          <?php echo $html->poster1caption;?>
+            <?php echo $html->poster1image;?>
+            <?php echo $html->poster1heading;?>
+            <?php echo $html->poster1caption;?>
         </div>
       </li>
     </ul>
@@ -90,9 +90,9 @@ echo $OUTPUT->doctype() ?>
     <ul class="thumbnails">
       <li class="span12">
         <div class="thumbnail">
-          <?php echo $html->poster2image;?>
-          <?php echo $html->poster2heading;?>
-          <?php echo $html->poster2caption;?>
+            <?php echo $html->poster2image;?>
+            <?php echo $html->poster2heading;?>
+            <?php echo $html->poster2caption;?>
         </div>
       </li>
     </ul>

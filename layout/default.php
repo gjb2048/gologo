@@ -54,7 +54,7 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body <?php echo $OUTPUT->body_attributes($html->brandlogo); ?>>
+<body <?php echo $OUTPUT->body_attributes($html->bodyclasses); ?>>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
